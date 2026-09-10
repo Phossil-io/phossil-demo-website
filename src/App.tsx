@@ -24,158 +24,7 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 const calendar = 'https://calendar.app.google/dVxeTjcLc9DGcFRU6';
-const records = [
-  {
-    id: 'continuity',
-    name: 'Maya’s shared working note',
-    date: 'May 7',
-    author: 'Maya · Customer Success',
-    text: 'Maya records her stopping point: I am comparing a setup guide with a product redesign. No approach has been selected. I want to compare the customer accounts with Product and Support before recommending a trial. This note is shared with the example team; it is not a private note transferred by opening Workspace.',
-  },
-  {
-    id: 'interviews',
-    name: 'Customer interview notes',
-    date: 'May 6',
-    author: 'Maya · Customer Success',
-    text: 'Three customers said they did not know what to do after creating an account. Sales notes say these customers wanted to invite their colleagues and start using the software together. This describes the interviewed customers, not every customer.',
-  },
-  {
-    id: 'support',
-    name: 'Support conversation',
-    date: 'May 7',
-    author: 'Jon · Support',
-    text: 'Jon reports repeated questions about adding teammates. He initially describes this as a permissions problem. His follow-up clarifies that some customers cannot find the invitation step; whether permissions also prevent others from continuing has not been checked.',
-  },
-  {
-    id: 'proposal',
-    name: 'Options and AI draft review',
-    date: 'May 9',
-    author: 'Maya · Customer Success; Leo · Product',
-    text: 'Maya had paused while comparing a setup guide with a product redesign. Leo estimates that a redesign would take longer; a guide can be tried without changing the product. An AI assistant drafts a guide from the permitted setup instructions. Maya corrects its assumption: only account admins can invite teammates. The draft is revised; Maya still needs to check every step. Alex, the pilot owner, has not yet approved the proposed six-customer trial. AI may draft, not approve or publish.',
-  },
-  {
-    id: 'decision',
-    name: 'Trial decision and delivery',
-    date: 'May 12',
-    author: 'Alex · Pilot owner; Maya · Customer Success',
-    text: 'Alex approves a trial with six new customer admins, not a company-wide rollout. The decision favors a guide to test whether clearer instructions help before investing in a redesign. Maya records that she reviewed the guide, sent it to those six participants, and observed their first setup sessions. Approval, delivery, and outcome are recorded separately.',
-  },
-  {
-    id: 'results',
-    name: 'Six-customer trial observations',
-    date: 'May 16',
-    author: 'Maya · Customer Success',
-    text: 'Four of six customer admins completed setup without assistance. Two needed help finding the invitation step. These are observed trial results. There was no comparison group; the results do not prove the guide improved setup, retention, or revenue.',
-  },
-  {
-    id: 'learning',
-    name: 'Reviewed learning and follow-up',
-    date: 'May 17',
-    author: 'Maya · Customer Success; Leo · Product',
-    text: 'Maya and Leo review the trial observations. They retain two points: the instructions must distinguish admins from teammates, and two of six admins needed help locating invitations. Leo takes the invitation-step question into a separate navigation-design investigation. Maya prepares another guide version. These follow-ups are not completed changes. Larger accounts and other roles need their own evidence; the trial is not a universal rule.',
-  },
-];
-const providers: Record<string, { name: string; type: string; logo: string }> =
-  {
-    continuity: {
-      name: 'Google Docs',
-      type: 'Document',
-      logo: '/providers/google-docs.png',
-    },
-    interviews: {
-      name: 'Google Docs',
-      type: 'Interview document',
-      logo: '/providers/google-docs.png',
-    },
-    support: {
-      name: 'Slack',
-      type: 'Message thread',
-      logo: '/providers/slack.png',
-    },
-    proposal: {
-      name: 'Google Docs',
-      type: 'Draft document',
-      logo: '/providers/google-docs.png',
-    },
-    decision: {
-      name: 'Slack',
-      type: 'Decision & delivery thread',
-      logo: '/providers/slack.png',
-    },
-    results: {
-      name: 'Google Sheets',
-      type: 'Spreadsheet',
-      logo: '/providers/google-sheets.png',
-    },
-    learning: {
-      name: 'Google Docs',
-      type: 'Review document',
-      logo: '/providers/google-docs.png',
-    },
-  };
-
-const stages = [
-  {
-    label: 'Understand the problem',
-    heading: 'Why are customers getting stuck?',
-    status: 'Question open',
-    question: 'Is this a product problem, or do people need better guidance?',
-    answer:
-      'Sales describes what customers hoped to do. Interviews show where they lost their way. Support points to invitations. Together, these suggest a place to investigate—not a settled explanation.',
-    idea: 'Compare a setup guide with a product change',
-    note: 'We have not established the cause for every customer.',
-    next: 'Compare the two approaches with Product and Support',
-    left: 'Comparing a setup guide with a product redesign.',
-    changed:
-      'Support has clarified where customers need help: inviting teammates.',
-    impact:
-      'The next comparison should focus on that step, not the whole setup process.',
-    unknown: 'Are people unable to invite colleagues, or unable to find how?',
-    record: 'support',
-    sources: ['interviews', 'support', 'continuity'],
-    date: 'May 7',
-  },
-  {
-    label: 'Develop and try an approach',
-    heading: 'Test an idea before a wider rollout.',
-    status: 'Proposal under review',
-    question: 'What could we try, and what should the AI help with?',
-    answer:
-      'A guide lets the team try clearer instructions before investing in a redesign. AI can draft from the setup instructions; Maya checks the steps. Her correction—only admins can invite teammates—changes both the draft and who should join the trial.',
-    idea: 'Try a reviewed guide with six customer admins',
-    note: 'Alex has not approved the trial yet. AI cannot approve or publish it.',
-    next: 'Maya checks the guide; Alex decides the trial scope',
-    left: 'Comparing a guide with a redesign; no approach was selected.',
-    changed:
-      'Product proposed a guide trial. Maya corrected the AI draft: invitations require an admin.',
-    impact: 'Revise the guide and limit the proposed trial to admins.',
-    unknown: 'Will clearer instructions actually help?',
-    record: 'proposal',
-    sources: ['interviews', 'support', 'proposal'],
-    date: 'May 9',
-  },
-  {
-    label: 'Learn and carry it forward',
-    heading: 'What happened—and what changes next?',
-    status: 'Results reviewed',
-    question: 'What can this experience inform beyond the trial?',
-    answer:
-      'Four of six admins completed setup unaided; two needed help finding invitations. Maya and Leo reviewed this. It informs the next guide and a separate product-design question, without proving a wider benefit or applying the result to every customer.',
-    idea: 'Improve the guide; investigate invitation visibility',
-    note: 'Follow-up work is proposed. Wider results remain unknown.',
-    next: 'Maya revises the guide; Leo investigates the invitation step',
-    left: 'Preparing a six-customer trial, pending Alex’s decision.',
-    changed:
-      'Alex approved the trial. Maya ran it. Results and a joint review are now available.',
-    impact:
-      'The next guide must explain admin roles; Product has a specific design question to investigate.',
-    unknown:
-      'Would a different design help? Does the same issue affect larger customers?',
-    record: 'results',
-    sources: ['proposal', 'decision', 'results', 'learning'],
-    date: 'May 17',
-  },
-];
+import { records, providers, stages, relationships } from './rollout-example';
 export default function Home() {
   const [surface, setSurface] = useState('messaging'),
     [stage, setStage] = useState(0),
@@ -328,10 +177,10 @@ export default function Home() {
   };
   const actionDraft =
     stage === 0
-      ? 'Jon and Leo — can we compare where customers get stuck before choosing between a guide and a product change?'
+      ? 'Jon and Leo — which support cases match ID-247, and which are navigation issues? Priya — can we resolve the shared specialist allocation before committing to all 40 branches?'
       : stage === 1
-        ? 'Alex — please review the proposed six-admin trial. I will check the guide’s steps before any customer receives it.'
-        : 'Leo — can we investigate the invitation step? Two of six admins needed help there. This does not establish the same problem for every customer.';
+        ? 'Alex — please review a five-branch pilot, conditional on sign-in tests, security review, customer agreement, and support capacity. The remaining 35 branches and the navigation redesign are not included.'
+        : 'Team — the five-branch pilot recorded 15 of 18 attempts unaided, with three needing navigation help. Let’s prepare a next-wave capacity check, a customer design test, and a revised Sales checklist. No broader rollout is approved by this result.';
   const goWorkspace = (tab = 'overview') => {
     setWorkTab(tab);
     setSurface('workspace');
@@ -500,19 +349,20 @@ export default function Home() {
             A fictional example · a software company
           </span>
           <h3>
-            Customers buy the software.
+            Forty customer branches.
             <br />
-            Then struggle to get started.
+            One launch date. Nothing quite lines up.
           </h3>
           <p>
-            You’re Maya in Customer Success. Sales knows what customers
-            expected. Support hears where they get stuck. Product can change the
-            experience. You want to work out what would help—not jump straight
-            to a solution.
+            You’re Maya, coordinating a software rollout for Northstar. Sales has
+            promised a date. Support sees different failure patterns. Engineering
+            has a fix under review, Design has another idea, and Operations has
+            the same specialist booked on two customers. What can safely move now—and what needs to change?
           </p>
           <p className="scenario-question">
-            Follow how an initial question becomes a team experiment, then
-            learning that informs more than one piece of work.
+            Explore a fictional case across CRM, support tickets, engineering issues,
+            code reviews, design files, staffing spreadsheets, chat, and event data.
+            Follow the disagreements and dependencies—not a neat handoff between teams.
           </p>
         </div>
         {storyControls}
@@ -544,29 +394,27 @@ export default function Home() {
               Interactive product concept · fictional example
             </span>
           </div>
-          <div className="demo-shell">
-            <div className="demo-top">
+          <div className={`demo-shell ${surface === 'flow' ? 'flow-only-shell' : ''}`}>
+            {surface !== 'flow' && <div className="demo-top">
               <span className="demo-brand">
                 <img src="/brand/symbol-light.svg" alt="" /> PHOSSIL
               </span>
               <span>
-                {surface === 'flow'
-                  ? 'Your desktop · Flow Card beside your work'
-                  : surface === 'messaging'
+                {surface === 'messaging'
                     ? 'Team messaging · fictional Slack example'
-                    : 'Phossil Workspace / Customer setup'}
+                    : 'Phossil Workspace / Northstar rollout'}
               </span>
               <span className="avatar" aria-label="Illustrative user Maya">
                 M
               </span>
-            </div>
+            </div>}
 
             <TabsContent value="messaging" className="demo-content">
               <div className="messaging-scene">
                 <aside className="messaging-sidebar">
                   <img src="/providers/slack.png" alt="Slack" />
                   <strong>Example company</strong>
-                  <span># customer-setup</span>
+                  <span># northstar-rollout</span>
                   <small>
                     Fictional channel
                     <br />
@@ -578,7 +426,7 @@ export default function Home() {
                   aria-label="Example team chat"
                 >
                   <header>
-                    <strong># customer-setup</strong>
+                    <strong># northstar-rollout</strong>
                     <span>Maya · Jon · Leo · Alex</span>
                   </header>
                   <div className="native-message">
@@ -589,7 +437,7 @@ export default function Home() {
                       </strong>
                       <p>{s.changed}</p>
                       <p className="why-notified">
-                        Why this reached Maya: she follows customer setup, and
+                        Why this reached Maya: she follows customer rollout, and
                         this update affects the question she is working on. Only
                         permitted context belongs in this channel.
                       </p>
@@ -644,20 +492,20 @@ export default function Home() {
                 <div className="work-main">
                   <div className="work-title">
                     <div>
-                      <span className="eyebrow">Work / Customer setup</span>
+                      <span className="eyebrow">Work / Northstar rollout</span>
                       <h3>{s.heading}</h3>
                     </div>
                     <span className="status-tag">{s.status}</span>
                   </div>
                   <p className="work-purpose">
-                    Help new customers start using the software with their
-                    teammates.
+                    Coordinate a viable rollout without confusing a sales commitment,
+                    a passing test, and an authorized release.
                   </p>
                   <div className="scope-strip">
                     <span>Maya · coordinates</span>
-                    <span>Leo · Product</span>
+                    <span>Leo · Engineering</span>
                     <span>Jon · Support</span>
-                    <span>Alex · trial decision</span>
+                    <span>Alex · launch authority</span><span>Priya · Operations</span><span>Elena · Sales</span><span>Sam · Design</span>
                   </div>
                   <Tabs
                     value={workTab}
@@ -707,7 +555,7 @@ export default function Home() {
                             <dt>Trial decision</dt>
                             <dd>
                               {stage === 2
-                                ? 'Alex approved six admins only.'
+                                ? 'Alex approved five branches only.'
                                 : stage === 1
                                   ? 'Not approved. Alex decides scope.'
                                   : 'No trial proposed yet; compare approaches.'}
@@ -742,9 +590,9 @@ export default function Home() {
                           ))}
                         </div>
                         <p className="unknown-note">
-                          Coverage is limited. Interviews are accounts from
-                          specific people; a proposal is not a decision; a trial
-                          is not proof of a company-wide result.
+                          Coverage is limited. A CRM commitment is not readiness;
+                          a support ticket is not a root-cause verdict; a design
+                          prototype is not a deployed fix. Inspect the role and limits of each source.
                         </p>
                       </div>
                     </TabsContent>
@@ -755,8 +603,8 @@ export default function Home() {
                           <li>
                             <strong>May 6–7 · Question opened</strong>
                             <p>
-                              Customer and Support accounts point to setup
-                              friction. The cause remains open.
+                              CRM commitments, two support symptoms, an engineering defect,
+                              a design prototype, and shared staffing do not tell the same story.
                             </p>
                             {source('support')}
                           </li>
@@ -766,9 +614,8 @@ export default function Home() {
                                 May 9 · Proposed approach and correction
                               </strong>
                               <p>
-                                Maya corrects the AI draft: only admins can
-                                invite teammates. The guide and trial audience
-                                need to reflect that.
+                                Maya corrects the AI draft: green unit tests do not mean the
+                                sign-in test passed. The launch brief must remain conditional.
                               </p>
                               {source('proposal')}
                             </li>
@@ -796,18 +643,17 @@ export default function Home() {
                         <h4>A choice with reasons—not an AI verdict.</h4>
                         <div className="option-grid">
                           <article>
-                            <strong>Clarify the setup guide</strong>
+                            <strong>Launch everywhere with manual support</strong>
                             <p>
-                              Try clearer instructions without changing the
-                              product. Might not solve a usability or permission
-                              problem.
+                              Could preserve the date, but double-booked support cannot
+                              cover both customers. It also leaves the access defect unresolved.
                             </p>
                           </article>
                           <article>
-                            <strong>Redesign the invitation step</strong>
+                            <strong>Phase the launch—or delay it</strong>
                             <p>
-                              Could address the interface itself. Product needs
-                              to investigate scope and effort.
+                              A five-branch pilot can limit exposure after required checks.
+                              A full delay protects scope but changes the customer commitment.
                             </p>
                           </article>
                         </div>
@@ -815,8 +661,8 @@ export default function Home() {
                           {stage === 0
                             ? 'These are possibilities for discussion. The team has not selected an approach.'
                             : stage === 1
-                              ? 'Proposed: test a reviewed guide with six customer admins before investing in a redesign. The trial limits exposure while the team learns.'
-                              : 'Recorded decision: Alex approved the six-admin trial. This was not approval to roll out to every customer.'}
+                              ? 'Proposed: five branches after sign-in tests, security review, capacity allocation and customer agreement. Investigate navigation separately.'
+                              : 'Recorded decision: Alex approved five branches only after the required checks and agreement. Thirty-five branches remain paused.'}
                         </p>
                         {source(
                           stage === 0
@@ -831,12 +677,12 @@ export default function Home() {
                               AI contribution · illustrative
                             </span>
                             <p>
-                              <strong>Task:</strong> draft the guide from
-                              permitted setup instructions.{' '}
-                              <strong>Review:</strong> Maya checks the steps and
-                              corrects the admin-role assumption.{' '}
+                              <strong>Task:</strong> draft the launch brief and Jira tasks from
+                              permitted source records.{' '}
+                              <strong>Review:</strong> Maya checks dependencies and
+                              corrects the unsupported test-completion claim.{' '}
                               <strong>Boundary:</strong> no approval,
-                              publishing, or customer contact by AI.
+                              release, permission changes, or customer commitments by AI.
                             </p>
                           </div>
                         )}
@@ -866,40 +712,39 @@ export default function Home() {
                             <div className="outcome-grid">
                               <article>
                                 <span>Decision</span>
-                                <strong>Six-admin trial approved</strong>
+                                <strong>Five-branch pilot approved</strong>
                                 <p>Alex · May 12</p>
                               </article>
                               <article>
                                 <span>Action recorded</span>
-                                <strong>Guide reviewed and tested</strong>
-                                <p>Maya observed six setup sessions.</p>
+                                <strong>Release v2.8.1 deployed</strong>
+                                <p>Deployment log confirms five branches enabled.</p>
                               </article>
                               <article>
                                 <span>Result observed</span>
-                                <strong>4 of 6 finished unaided</strong>
-                                <p>Two needed help finding invitations.</p>
+                                <strong>15 of 18 attempts unaided</strong>
+                                <p>Three needed navigation help; no access error observed.</p>
                               </article>
                             </div>
                             {source('decision')}
+                            {source('release')}
                             {source('results')}
                             <div className="learning-return">
                               <span className="card-label">
                                 Reviewed learning → future work
                               </span>
-                              <h4>One experience. Two next directions.</h4>
+                              <h4>One experience. Three next directions.</h4>
                               <p>
-                                <strong>Maya’s next guide:</strong> explain
-                                admin roles clearly.{' '}
-                                <strong>Leo’s product investigation:</strong>{' '}
-                                examine whether invitations are hard to find.
-                                Both retain the original observations and
-                                limits.
+                                <strong>Rollout:</strong> recheck staffing before the next wave.{' '}
+                                <strong>Product:</strong> test navigation with customers.{' '}
+                                <strong>Sales:</strong> revise the launch-readiness checklist.
+                                Each carries the reviewed evidence and its limits.
                               </p>
                               <p>
                                 These are follow-ups, not completed
                                 improvements. No comparison group means we
-                                cannot claim the guide caused better outcomes.
-                                Other roles and larger customers still need
+                                cannot claim the pilot caused better outcomes.
+                                Other branches and access configurations still need
                                 investigation.
                               </p>
                               {source('learning')}
@@ -964,7 +809,8 @@ export default function Home() {
                               ? Math.min(
                                   100,
                                   Math.floor(
-                                    (pan.current.clientWidth / 660) * 100,
+                                    Math.min(pan.current.clientWidth / 760,
+                                      pan.current.clientHeight / 960) * 100,
                                   ),
                                 )
                               : 70,
@@ -1030,8 +876,8 @@ export default function Home() {
                   >
                     <div
                       style={{
-                        width: (660 * zoom) / 100,
-                        height: (650 * zoom) / 100,
+                        width: (760 * zoom) / 100,
+                        height: (960 * zoom) / 100,
                         minWidth: '100%',
                       }}
                     >
@@ -1042,16 +888,16 @@ export default function Home() {
                         <div className="map-center">
                           <small>The shared question</small>
                           <h4>
-                            Help customers
+                            What can move
                             <br />
-                            complete setup
+                            before launch?
                           </h4>
                         </div>
                         <div className="map-branches">
                           <article>
-                            <small>Customer & Support accounts</small>
-                            <strong>“How do I invite my team?”</strong>
-                            <span>Related accounts · not a proven cause</span>
+                            <small>Commercial, technical & capacity constraints</small>
+                            <strong>A promised date is not a ready rollout</strong>
+                            <span>Separate defects, expectations, and dependencies</span>
                           </article>
                           <article className="map-selected">
                             <small>{s.status}</small>
@@ -1061,12 +907,12 @@ export default function Home() {
                         </div>
                         <div className="map-record map-source-grid">
                           {s.sources.map((id) => (
-                            <div key={id}>{source(id)}</div>
+                            <div key={id}>{source(id)}<span className="source-relationship">{relationships[id]}</span></div>
                           ))}
                         </div>
                         <p className="map-caption">
                           {stage === 2
-                            ? 'Reviewed learning informs both the guide and Product’s investigation.'
+                            ? 'Reviewed learning informs rollout planning, design testing, and Sales commitments.'
                             : 'Inspect the source. Challenge the explanation. Develop another possibility.'}
                         </p>
                       </div>
@@ -1082,30 +928,6 @@ export default function Home() {
 
             <TabsContent value="flow" className="demo-content">
               <div className="flow-scene">
-                <div className="work-document">
-                  <span className="eyebrow">Document open on your desktop</span>
-                  <h3>
-                    Helping customers
-                    <br />
-                    get started
-                  </h3>
-                  <p>Maya’s working notes · fictional</p>
-                  <hr />
-                  <h4>Our aim</h4>
-                  <p>
-                    Help customers set up an account and invite teammates,
-                    without needing someone to walk them through every step.
-                  </p>
-                  <h4 className="document-section">Working question</h4>
-                  <p>
-                    Would clearer instructions help—or does the product need to
-                    change?
-                  </p>
-                  <p className="desktop-note">
-                    Flow Card is a separate desktop panel, not a card embedded
-                    inside Workspace.
-                  </p>
-                </div>
                 {flowHidden ? (
                   <button
                     className="button deep reopen-flow"
@@ -1147,11 +969,11 @@ export default function Home() {
                     <span className="card-label">
                       Opened by you · Your view
                     </span>
-                    <h4>Customer setup</h4>
+                    <h4>Northstar rollout</h4>
                     {!flowCollapsed && (
                       <>
                         <p className="flow-purpose">
-                          Help new customers get started with their team.
+                          Move a multi-team rollout forward without losing its constraints.
                         </p>
                         <dl className="continuity-fields">
                           <dt>Where you left off</dt>
@@ -1182,7 +1004,7 @@ export default function Home() {
                               Prepare a reply
                             </button>
                             <button onClick={() => setFlowHidden(true)}>
-                              Continue in my document
+                              Return to my work
                             </button>
                           </div>
                           {preparedAction[stage] !== undefined && (
@@ -1203,7 +1025,7 @@ export default function Home() {
                               />
                               <small>
                                 Prepared locally. Not sent to a channel or
-                                written to your document.
+                                written to your work tools.
                               </small>
                               <button
                                 onClick={() => {
@@ -1301,7 +1123,7 @@ export default function Home() {
             </h2>
           </div>
           <p>
-            The example is customer setup; the capability is broader. Planning a
+            The example is a customer rollout; the capability is broader. Planning a
             launch, investigating a delay, developing a new service, or
             directing AI work all draw on information, relationships, and
             reasoning. Phossil is designed to carry that understanding across

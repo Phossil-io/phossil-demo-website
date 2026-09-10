@@ -2398,3 +2398,12 @@ footer img {
     font-size: 11px;
   }
 }
+
+/* Standalone Flow Card: no desktop document, app chrome, or workspace around it. */
+.flow-only-shell { border: 0; box-shadow: none; background: transparent; }
+.flow-only-shell .flow-scene { display: flex; justify-content: center; background: transparent; padding: 24px 0; min-height: 0; }
+.flow-only-shell .flow-card { width: min(100%, 560px); flex: none; margin: 0; }
+.canvas-world { width: 760px; min-height: 960px; }
+.map-source-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.source-relationship { display: block; font-size: 12px; line-height: 1.5; margin: 5px 0 12px; color: #4b5751; }
+.case-constraints { padding: 14px 18px; margin: 14px 0; border-left: 3px solid #9B9284; background: #eeece4; font-size: 14px; line-height: 1.6; }
