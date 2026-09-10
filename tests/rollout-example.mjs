@@ -19,6 +19,8 @@ for (const stage of stages) for (const id of stage.sources) {
   assert(Number(record.date.split(' ')[1]) <= Number(stage.date.split(' ')[1]), `Future source ${id}`);
 }
 assert(!app.includes('className="work-document"'), 'Flow Card must not have a document beside it');
+assert(app.includes('className="desktop-backdrop" aria-hidden="true"'), 'OS backdrop must be decorative, not another interactive surface');
+assert(app.includes('Illustrated desktop · fictional'), 'OS backdrop must be labeled as fictional');
 assert(app.includes("surface !== 'flow'"), 'Flow Card must not have surrounding application chrome');
 assert(app.includes('pan.current.clientWidth / 760'));
 assert(app.includes('pan.current.clientHeight / 960'));

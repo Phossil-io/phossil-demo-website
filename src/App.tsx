@@ -928,6 +928,23 @@ export default function Home() {
 
             <TabsContent value="flow" className="demo-content">
               <div className="flow-scene">
+                <div className="desktop-backdrop" aria-hidden="true">
+                  <div className="desktop-menu"><span>● &nbsp; Workspace &nbsp; File &nbsp; View</span><span>Illustrated desktop · fictional</span></div>
+                  <div className="desktop-window desktop-chat">
+                    <div className="desktop-title"><i /><i /><i /><img src="/providers/slack.png" alt="" />Team conversations</div>
+                    <div className="desktop-chat-body"><aside># northstar-rollout<br /><br /># engineering<br /><br /># operations</aside><div><b># northstar-rollout</b><p><strong>Jon · Support</strong><br />Two different symptoms in the tickets.</p><p><strong>Priya · Operations</strong><br />Let’s check the shared staffing plan.</p><div className="desktop-input">Reply to the team…</div></div></div>
+                  </div>
+                  <div className="desktop-window desktop-board">
+                    <div className="desktop-title"><i /><i /><i /><img src="/providers/jira.svg" alt="" />Engineering board</div>
+                    <div className="desktop-board-body"><div><b>In progress</b><p>ID-247<br />Access permissions</p><p>Sign-in test</p></div><div><b>Review</b><p>PR #82<br />Permissions timing</p><p>Security review</p></div><div><b>Next</b><p>Navigation study</p></div></div>
+                  </div>
+                  <div className="desktop-window desktop-sheet">
+                    <div className="desktop-title"><i /><i /><i /><img src="/providers/google-sheets.png" alt="" />Implementation capacity</div>
+                    <div className="desktop-sheet-grid"><b>Allocation</b><b>Mon</b><b>Tue</b><span>Northstar</span><span>Review</span><span>Reserved?</span><span>Other customer</span><span>Reserved</span><span>Reserved</span><span>Shared specialist</span><span>Overlap</span><span>Check</span></div>
+                  </div>
+                  <div className="desktop-files"><span>▱<small>Launch brief</small></span><span>▱<small>Pilot events.csv</small></span><span>▱<small>Design review</small></span></div>
+                  <div className="desktop-dock">{['slack.png','jira.svg','github.svg','figma.svg','google-sheets.png'].map(icon=><img key={icon} src={'/providers/'+icon} alt="" />)}<img src="/brand/symbol-light.svg" alt="" /></div>
+                </div>
                 {flowHidden ? (
                   <button
                     className="button deep reopen-flow"
