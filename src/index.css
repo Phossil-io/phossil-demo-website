@@ -2407,3 +2407,22 @@ footer img {
 .map-source-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .source-relationship { display: block; font-size: 12px; line-height: 1.5; margin: 5px 0 12px; color: #4b5751; }
 .case-constraints { padding: 14px 18px; margin: 14px 0; border-left: 3px solid #9B9284; background: #eeece4; font-size: 14px; line-height: 1.6; }
+
+/* An illustrative OS backdrop, not another document or interactive Phossil surface. */
+.flow-only-shell .flow-scene { position: relative; isolation: isolate; overflow: hidden; justify-content: flex-end; padding: 76px 38px 94px; min-height: 830px; border-radius: 16px; background: radial-gradient(ellipse at 10% 80%, #7d948e, transparent 65%), linear-gradient(135deg,#334951,#7b8580 60%,#b6afa0); }
+.desktop-backdrop { position: absolute; inset: 0; z-index: -1; pointer-events: none; user-select: none; overflow: hidden; color: #293739; font: 12px/1.5 'Noto Sans', sans-serif; }
+.desktop-menu { display:flex; justify-content:space-between; padding:10px 18px; background:#f2eee6cb; font-size:11px; }
+.desktop-window { position:absolute; width:580px; border:1px solid #ffffff80; border-radius:10px; background:#f6f4eef0; box-shadow:0 15px 45px #0d1a2050; overflow:hidden; }
+.desktop-title { display:flex; align-items:center; gap:5px; height:35px; padding:0 12px; background:#deded9; font-size:11px; }
+.desktop-title i { width:8px; height:8px; border-radius:50%; background:#ab766d; }.desktop-title i:nth-child(2){background:#c4aa70}.desktop-title i:nth-child(3){background:#7d9b80}
+.desktop-title img { width:16px; height:16px; margin:0 6px 0 14px; object-fit:contain; }
+.desktop-chat { top:100px; left:-45px; transform:rotate(-3deg); }
+.desktop-chat-body { display:grid; grid-template-columns:145px 1fr; min-height:265px; }
+.desktop-chat-body aside { padding:25px 16px; background:#d2d8d4; }.desktop-chat-body>div { padding:18px; }.desktop-chat-body p { font-size:12px; line-height:1.6; margin:16px 0; }.desktop-input { padding:9px; border:1px solid #aeb5b0; border-radius:5px; color:#748078; }
+.desktop-board { top:370px; left:20px; transform:rotate(2deg); width:630px; }.desktop-board-body{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:20px;min-height:245px}.desktop-board-body p{font-size:12px;line-height:1.6;margin:12px 0;padding:12px;background:white;border:1px solid #d3d5cd;border-radius:4px}
+.desktop-sheet { top:650px; left:-30px; transform:rotate(-2deg); width:570px; }.desktop-sheet-grid{display:grid;grid-template-columns:2fr 1fr 1fr;padding:15px}.desktop-sheet-grid>*{padding:10px;border:1px solid #c5cdc2;font-size:11px}.desktop-sheet-grid b{background:#dce4d7}
+.desktop-files{position:absolute;left:28px;top:925px;display:flex;gap:24px;color:#f2eee6;text-shadow:0 1px 3px #0d1a20}.desktop-files>span{text-align:center;font-size:34px}.desktop-files small{display:block;font-size:11px}
+.desktop-dock{position:absolute;bottom:17px;left:50%;transform:translateX(-50%);display:flex;gap:16px;padding:12px 20px;background:#f2eee6c9;border:1px solid #ffffff70;border-radius:17px;box-shadow:0 5px 20px #0d1a2030}.desktop-dock img{width:30px;height:30px;object-fit:contain}
+.flow-only-shell .flow-card { position:relative; width:min(100%,510px); box-shadow:0 24px 70px #0d1a2070,0 0 0 1px #ffffff80; background:#faf9f5; }
+.flow-only-shell .reopen-flow { align-self:flex-start; position:relative; }
+@media(max-width:700px){.flow-only-shell .flow-scene{padding:62px 16px 85px}.flow-only-shell .flow-card{width:100%}.desktop-window{opacity:.5}.desktop-menu{font-size:9px}.desktop-menu span:first-child{display:none}.desktop-dock{gap:12px;padding:10px 15px}.desktop-dock img{width:25px;height:25px}}
