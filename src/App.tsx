@@ -24,6 +24,7 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 const calendar = 'https://calendar.app.google/dVxeTjcLc9DGcFRU6';
+import OpeningPreview from './OpeningPreview';
 import { records, providers, stages, relationships } from './rollout-example';
 export default function Home() {
   const [surface, setSurface] = useState('messaging'),
@@ -223,6 +224,7 @@ export default function Home() {
   }
   return (
     <main>
+      <div className="iteration-banner">Design iteration · Preview only <a href="https://www.phossil.io/" target="_blank" rel="noreferrer">Compare the current site ↗</a></div>
       <a className="skip-link" href="#idea">
         Skip to content
       </a>
@@ -240,35 +242,14 @@ export default function Home() {
             </a>
           </nav>
         </header>
-        <section className="hero wrap" id="idea">
-          <div className="hero-top">
-            <span className="eyebrow">
-              An operating & learning layer for work
-            </span>
-            <span className="quiet-tag">In development</span>
-          </div>
-          <h1>
-            Work creates understanding.
-            <br />
-            <em>Build on it.</em>
-          </h1>
-          <div className="hero-bottom">
-            <p>
-              Phossil connects the information, relationships, and reasoning
-              behind work—across people, teams, systems, and time. So
-              understanding can guide what you do next, and grow from what
-              happens.
-            </p>
-            <div className="hero-actions">
-              <a className="button ivory" href="#experience">
-                See the experience <ArrowRight size={18} />
-              </a>
-              <a className="text-link" href="#contact">
-                Talk with us <ArrowUpRight size={16} />
-              </a>
-            </div>
-          </div>
-        </section>
+        <OpeningPreview onExplore={(nextSurface, nextStage) => {
+          setSurface(nextSurface);
+          setStage(nextStage);
+          setFlowHidden(false);
+          setFlowCollapsed(false);
+          if (nextSurface === 'workspace') setWorkTab('outcome');
+          document.getElementById('experience')?.scrollIntoView({behavior: 'instant'});
+        }} />
         <div className="hero-foot wrap">
           <span>Individual understanding. Collective capability.</span>
           <span>01 — The experience ↓</span>

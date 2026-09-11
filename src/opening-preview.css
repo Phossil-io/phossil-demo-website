@@ -1,0 +1,40 @@
+.iteration-banner{background:#B9B5AA;color:#0D1A20;padding:10px 4%;font-size:13px;display:flex;justify-content:space-between;gap:20px}
+.iteration-banner a{text-decoration:underline}
+.preview-hero-copy{position:relative;padding-top:88px;padding-bottom:100px;overflow:hidden}
+.preview-hero-copy>.eyebrow{position:relative;z-index:1}
+.preview-hero-copy h1{position:relative;z-index:1;font-size:clamp(58px,7.5vw,112px);line-height:1.04;letter-spacing:-.055em;margin:42px 0 32px;font-weight:650;max-width:850px}
+.preview-hero-copy em,.connection-intro em{font-style:normal;color:#B9B5AA}
+.preview-hero-copy p{position:relative;z-index:1;font-size:20px;line-height:1.6;color:#d0cec6;max-width:650px}
+.preview-jump{position:relative;z-index:1;display:inline-flex;align-items:center;gap:22px;margin-top:32px;border-bottom:1px solid #9B9284;padding-bottom:12px}
+.strata-mark{position:absolute;right:-50px;top:100px;width:46%;opacity:.42}
+.strata-mark>img{width:100%;height:480px;object-fit:contain}
+.strata-mark>span{display:block;text-align:right;font-size:14px;line-height:1.9;padding-right:90px}
+.strata-mark strong{font-weight:500}
+.connection-story{padding-top:64px;padding-bottom:52px;border-top:1px solid #ffffff30}
+.connection-intro{display:grid;grid-template-columns:1.6fr 1fr;column-gap:60px;align-items:end}
+.connection-intro>.eyebrow{grid-column:1/-1;margin-bottom:24px}
+.connection-intro h2{font-size:clamp(28px,3.4vw,48px);line-height:1.22;letter-spacing:-.03em;margin:0}
+.connection-intro p{font-size:17px;line-height:1.7;color:#B9B5AA;margin:0}
+.connection-choices{display:flex;gap:12px;flex-wrap:wrap;margin:38px 0 24px}
+.connection-choices button{display:flex;align-items:center;gap:30px;border:1px solid #ffffff40;border-radius:100px;background:transparent;color:#F2EEE6;padding:13px 22px;cursor:pointer}
+.connection-choices button[aria-pressed=true]{background:#F2EEE6;color:#0D1A20;border-color:#F2EEE6}
+.connection-choices button:hover{border-color:#F2EEE6}
+.connection-scene{display:grid;grid-template-columns:1fr 1.2fr;gap:70px;align-items:center;background:#17262b;border:1px solid #ffffff25;border-radius:24px;padding:48px;min-height:470px;animation:scene-in .35s ease-out}
+.connection-records{position:relative;display:grid;gap:24px}
+.connection-record{position:relative;z-index:1;display:flex;align-items:center;gap:18px;background:#F2EEE6;color:#0D1A20;border-radius:10px;padding:22px;box-shadow:0 12px 35px #0002}
+.connection-record:nth-child(2){margin-left:24px;margin-right:-24px}
+.connection-record img{width:26px;height:26px;object-fit:contain}
+.connection-record small{display:block;font-size:12px;color:#59645f;margin-bottom:8px}
+.connection-record .connection-source{font-size:11px;margin:12px 0 0}
+.connection-record:hover{outline:2px solid #B9B5AA}
+.connection-record strong{display:block;font-weight:550;font-size:17px;line-height:1.4}
+.connection-thread{position:absolute;right:-42px;top:40px;bottom:40px;width:60px;border:1px solid #B9B5AA;border-left:0;border-radius:0 20px 20px 0}
+.connection-understanding h3{font-size:30px;line-height:1.2;letter-spacing:-.03em;margin:16px 0}
+.connection-understanding p{color:#d0cec6;line-height:1.75;font-size:16px}
+.connection-focus{display:flex;gap:15px;align-items:center;border-top:1px solid #ffffff30;padding:18px 0;margin-top:20px;font-size:14px;line-height:1.5;color:#B9B5AA}
+.connection-focus img{width:34px;height:34px;object-fit:contain}
+.connection-disclosure{font-size:12px;color:#B9B5AA;margin-top:20px;line-height:1.6}
+@keyframes scene-in{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:850px){.strata-mark{right:-120px;width:65%;opacity:.18}.strata-mark>span{display:none}.connection-intro{display:block}.connection-intro>.eyebrow{display:block}.connection-intro p{margin-top:22px}.connection-scene{gap:44px;padding:28px;grid-template-columns:1fr}.connection-record:nth-child(2){margin:0}.connection-thread{display:none}.connection-records{gap:12px}.preview-hero-copy{padding-top:50px;padding-bottom:64px}}
+@media(max-width:500px){.preview-hero-copy h1{font-size:54px}.preview-hero-copy p{font-size:17px}.connection-choices{display:grid}.connection-choices button{justify-content:space-between}.connection-scene{padding:22px}.iteration-banner{font-size:11px}.connection-understanding h3{font-size:27px}}
+@media(prefers-reduced-motion:reduce){.connection-scene{animation:none}}
