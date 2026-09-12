@@ -25,7 +25,9 @@ import {
 } from '@/components/ui/dialog';
 const calendar = 'https://calendar.app.google/dVxeTjcLc9DGcFRU6';
 import OpeningPreview from './OpeningPreview';
+import ExperienceV2 from './ExperienceV2';
 import { records, providers, stages, relationships } from './rollout-example';
+const showLegacyExperience = false;
 export default function Home() {
   const [surface, setSurface] = useState('messaging'),
     [stage, setStage] = useState(0),
@@ -279,7 +281,8 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <section className="experience wrap" id="experience">
+      <ExperienceV2 surface={surface} onSurface={setSurface}/>
+      {showLegacyExperience && <section className="experience wrap" id="legacy-experience">
         <div className="section-heading">
           <div>
             <span className="eyebrow">A connected experience</span>
@@ -1081,6 +1084,7 @@ export default function Home() {
           systems are connected and no business actions are taken.
         </p>
       </section>
+      }
       <section className="understanding">
         <div className="wrap understanding-inner">
           <div className="layer-mark">
@@ -1121,7 +1125,7 @@ export default function Home() {
             </h2>
           </div>
           <p>
-            The example is a customer rollout; the capability is broader. Planning a
+            These examples explore a product launch and a cash-planning question; the capability is broader. Planning a
             launch, investigating a delay, developing a new service, or
             directing AI work all draw on information, relationships, and
             reasoning. Phossil is designed to carry that understanding across
