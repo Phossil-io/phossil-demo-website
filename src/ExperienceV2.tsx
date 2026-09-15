@@ -30,7 +30,7 @@ export default function ExperienceV2({surface,onSurface}:{surface:string;onSurfa
   function composer(label:string){return <form className="v2-composer" onSubmit={e=>{e.preventDefault();if(draft.trim()){setMessages([...messages,draft.trim()]);setDraft('');}}}><label>{label}<textarea value={draft} onChange={e=>setDraft(e.target.value)} placeholder={label}/></label><div><span>＋ &nbsp; ☺ &nbsp; @ &nbsp; Aa</span><button type="submit" disabled={!draft.trim()} aria-label="Send simulated message"><Send size={17}/></button></div><small>Illustration only · no live AI or messages sent</small></form>}
   function sourceButtons(){return <div className="v2-sources">{launchRecords.map((r,i)=><button key={r.name} onClick={()=>setRecord(i)}><img src={'/providers/'+r.logo} alt={r.app}/><span>{r.name}<small>{r.app} · {r.type} · Fictional</small></span><ArrowUpRight size={15}/></button>)}</div>}
   function replies(){return messages.map((m,i)=><div className="v2-local-reply" key={i}><b>You</b><p>{m}</p><b>Phossil · simulated</b><p>This preview keeps your question in this page. It does not generate a live answer. You can inspect the launch brief, compare the dependencies in Explorer, or prepare the illustrated validation request.</p></div>)}
-  return <section id="experience" className="experience-v2 wrap">
+  return <div className="experience-band"><section id="experience" className="experience-v2 wrap">
     <span className="eyebrow">A connected experience</span>
     <div className="v2-heading"><h2>Different work.<br/>A shared foundation.</h2><p>Start in a conversation, beside a deliverable, or with a question in Workspace. Choose the situation separately from the view. Phossil follows the work—not a prescribed sequence of screens.</p></div>
     <div className="v2-scenario-picker" role="group" aria-label="Choose a fictional scenario"><button aria-pressed={scenario==='launch'} onClick={()=>setScenario('launch')}><b>01 · A Q2 product launch</b><span>Partner marketing, product, engineering and leadership</span></button><button aria-pressed={scenario==='finance'} onClick={()=>setScenario('finance')}><b>02 · Growth and cash</b><span>Finance, sales, hiring and operating commitments</span></button></div>
@@ -51,5 +51,5 @@ export default function ExperienceV2({surface,onSurface}:{surface:string;onSurfa
     </div>
     <p className="v2-disclosure">Interactive design illustration. People, records and outcomes are synthetic. App interfaces are illustrative, not connected services. No live AI, messages, approvals, payments or edits to external tools occur.</p>
     <Dialog open={record!==null} onOpenChange={open=>{if(!open)setRecord(null)}}><DialogContent>{record!==null&&<><DialogTitle>{launchRecords[record].name}</DialogTitle><DialogDescription>{launchRecords[record].app} · {launchRecords[record].type} · Synthetic source</DialogDescription><p>{launchRecords[record].text}</p><small>This is the complete authored record for this illustration, not a file in your apps.</small></>}</DialogContent></Dialog>
-  </section>
+  </section></div>
 }
