@@ -26,7 +26,6 @@
 .connection-record img{width:26px;height:26px;object-fit:contain}
 .connection-record small{display:block;font-size:12px;color:#59645f;margin-bottom:8px}
 .connection-record .connection-source{font-size:11px;margin:12px 0 0}
-.connection-record:hover{outline:2px solid #B9B5AA}
 .connection-record strong{display:block;font-weight:550;font-size:17px;line-height:1.4}
 .connection-thread{position:absolute;right:-42px;top:40px;bottom:40px;width:60px;border:1px solid #B9B5AA;border-left:0;border-radius:0 20px 20px 0}
 .connection-understanding h3{font-size:30px;line-height:1.2;letter-spacing:-.03em;margin:16px 0}
