@@ -98,13 +98,20 @@
   --font-sans: Arial, Helvetica, sans-serif;
 }
 :root {
-  --deep: #0d1a20;
-  --ivory: #f2eee6;
-  --sage: #b9b5aa;
-  --sediment: #a9a294;
-  --bedrock: #9b9284;
+  /* DEC-033 palette supplied by Eric, 14 September 2026. */
+  --shale: #1d2933;
+  --slate: #3e5363;
+  --steel: #758a96;
+  --stone: #a7afad;
+  --limestone: #d7d2c6;
+  --chalk: #f2eee6;
+  --deep: var(--shale);
+  --ivory: var(--chalk);
+  --sage: var(--stone);
+  --sediment: var(--limestone);
+  --bedrock: var(--steel);
   --background: #f2eee6;
-  --foreground: #0d1a20;
+  --foreground: var(--shale);
   --muted: #e4e0d7;
   --muted-foreground: #59605d;
   --border: #c9c6bc;
