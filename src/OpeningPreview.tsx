@@ -19,7 +19,7 @@ export default function OpeningPreview({onExplore}:{onExplore:(surface:string,st
       <a className="preview-jump" href="#connection-story">See how understanding becomes useful <ArrowRight size={20}/></a>
       <div className="strata-mark" aria-hidden="true"><img src="/brand/symbol-dark.svg" alt=""/><span>Information.<br />Relationships.<br />Reasoning.<br /><strong>Something to build on.</strong></span></div>
     </div>
-    <div className="connection-story wrap" id="connection-story">
+    <div className="connection-band"><div className="connection-story wrap" id="connection-story">
       <div className="connection-intro"><span className="eyebrow">A shared foundation for work</span><h2>Connect understanding.<br />Move work forward.<br /><em>Learn from what happens.</em></h2><p>For individuals, teams, and organizations—working independently, together, or with AI. Explore how Phossil is designed to make understanding useful across the work, not just within one task.</p></div>
       <div className="connection-choices" role="group" aria-label="Explore Phossil capabilities">{moments.map((item,i)=><button key={item.label} aria-pressed={selected===i} onClick={()=>setSelected(i)}>{item.label}<ArrowUpRight size={17}/></button>)}</div>
       <div className="connection-scene" key={selected}>
@@ -27,6 +27,6 @@ export default function OpeningPreview({onExplore}:{onExplore:(surface:string,st
         <div className="connection-understanding" aria-live="polite"><span className="eyebrow">{m.kicker}</span><h3>{m.title}</h3><p>{m.text}</p><div className="connection-focus"><img src="/brand/symbol-dark.svg" alt="Phossil"/><span>{m.focus}</span></div><button className="button ivory" onClick={()=>onExplore(m.surface,m.stage)}>{m.cta}<ArrowRight size={18}/></button></div>
       </div>
       <p className="connection-disclosure">Capabilities in development. App logos illustrate the kinds of sources Phossil is designed to connect—not currently available integrations. Explore the fictional product walkthroughs below.</p>
-    </div>
+    </div></div>
   </section>;
 }
